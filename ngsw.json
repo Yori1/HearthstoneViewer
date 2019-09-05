@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1567684041855,
+  "timestamp": 1567684343683,
   "index": "https://yori1.github.io/HearthstoneViewer/index.html",
   "assetGroups": [
     {
@@ -10,8 +10,8 @@
       "urls": [
         "https://yori1.github.io/HearthstoneViewer/favicon.ico",
         "https://yori1.github.io/HearthstoneViewer/index.html",
-        "https://yori1.github.io/HearthstoneViewer/main-es2015.c12a57f7361925cc7477.js",
-        "https://yori1.github.io/HearthstoneViewer/main-es5.c12a57f7361925cc7477.js",
+        "https://yori1.github.io/HearthstoneViewer/main-es2015.7708b35e46ade98f636c.js",
+        "https://yori1.github.io/HearthstoneViewer/main-es5.7708b35e46ade98f636c.js",
         "https://yori1.github.io/HearthstoneViewer/manifest.webmanifest",
         "https://yori1.github.io/HearthstoneViewer/polyfills-es2015.fd917e7c3ed57f282ee5.js",
         "https://yori1.github.io/HearthstoneViewer/polyfills-es5.3aa54d3e5134f5b5b842.js",
@@ -49,9 +49,9 @@
     "https://yori1.github.io/HearthstoneViewer/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "https://yori1.github.io/HearthstoneViewer/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://yori1.github.io/HearthstoneViewer/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://yori1.github.io/HearthstoneViewer/index.html": "6a194e0b75d3760cd845a8a92d92bcc07fe9c29f",
-    "https://yori1.github.io/HearthstoneViewer/main-es2015.c12a57f7361925cc7477.js": "29fffa589b388dacccc343b7f8604b41e8a8ee95",
-    "https://yori1.github.io/HearthstoneViewer/main-es5.c12a57f7361925cc7477.js": "a1c82c2b6fc241b5db01fe30ed4fadc62d385acc",
+    "https://yori1.github.io/HearthstoneViewer/index.html": "316c4a18b9e49911d3e15f76d91deb60aa43f442",
+    "https://yori1.github.io/HearthstoneViewer/main-es2015.7708b35e46ade98f636c.js": "081c7b5ce82bac6cad8d709c7ba324e2a7c35306",
+    "https://yori1.github.io/HearthstoneViewer/main-es5.7708b35e46ade98f636c.js": "0a9cd98555b9cee0de4b8cec0514ed7cbb7cfe99",
     "https://yori1.github.io/HearthstoneViewer/manifest.webmanifest": "7a020156b27f51ab22731d3bda3e28762b454e61",
     "https://yori1.github.io/HearthstoneViewer/polyfills-es2015.fd917e7c3ed57f282ee5.js": "e2f28c3743afd2899e140ad831df9675c233c02b",
     "https://yori1.github.io/HearthstoneViewer/polyfills-es5.3aa54d3e5134f5b5b842.js": "db091f7ef692a1d3add240459a2ea20c81cd6f19",
