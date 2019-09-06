@@ -1,0 +1,16 @@
+
+.table-of-contents {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform: translateZ(0);-webkit-transform: translateZ(0);
+}
+
+.sub-header {
+    font-size: 1.2em;
+}
+
+.header {
+    font-size: 2.5em;
+}
