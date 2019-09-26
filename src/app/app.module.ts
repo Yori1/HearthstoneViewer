@@ -5,21 +5,31 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { OverviewComponentComponent } from './overview-component/overview-component.component';
-import { PortfolioComponent } from './portfolio/portfolio.component';
+import { OverviewComponent } from './overview/overview.component';
+import { HttpClientModule } from '@angular/common/http'; 
+import { MatSelectModule } from '@angular/material/select';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ReactiveFormsModule} from '@angular/forms'
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    OverviewComponentComponent,
-    PortfolioComponent
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
+    HttpClientModule,
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }
