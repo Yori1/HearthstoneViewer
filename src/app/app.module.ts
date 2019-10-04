@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms'
+import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 
 
@@ -25,7 +28,9 @@ import {ReactiveFormsModule} from '@angular/forms'
     ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatListModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

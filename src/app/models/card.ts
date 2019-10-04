@@ -5,6 +5,7 @@ export interface Card {
     cardSet: string,
     type: string,
     img: string,
+    text: string
     imgGold: string
 
 }

@@ -1,13 +1,20 @@
-
 <mat-form-field [formGroup]="formGroup">
-    <mat-label>Select an expansion</mat-label>
-    <mat-select (selectionChange)="onChangeExpansion()" formControlName="ExpansionsControl">
-      <mat-option *ngFor="let expansion of getSets()" [value]="expansion">
-        {{ expansion }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-label>Select an expansion</mat-label>
+  <mat-select [(value)]="default" (selectionChange)="onChangeExpansion()" formControlName="ExpansionsControl">
+    <mat-option *ngFor="let expansion of getSets()" [value]="expansion">
+      {{ expansion }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button class="chf">a</button>
 
-  <div *ngFor="let card of cards">
-      {{card.name}}
-  </div>
+
+<mat-grid-list cols="6">
+  <mat-grid-tile *ngFor="let card of cards">
+        <mat-grid-list cols="2">
+          <mat-grid-tile [colspan]="2">
+              <img class="cardImg " src="{{getCardImage(card)}}" onerror="this.onerror=null; this.src='assets/cardback.png'">
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-grid-tile>
+</mat-grid-list>

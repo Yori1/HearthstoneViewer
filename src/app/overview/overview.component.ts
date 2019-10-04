@@ -15,15 +15,28 @@ export class OverviewComponent implements OnInit {
   public apiInfo: ApiInfo;
   public cards: Card[] = [];
   public formGroup: FormGroup;
+  public default = "Basic";
   
 
   constructor(private formBuilder: FormBuilder, private apiInfoService: ApiInfoService, private apiCardService: ApiCardService) { }
 
   ngOnInit() {
-    this.formGroup = new FormGroup({
+      this.formGroup = new FormGroup({
       ExpansionsControl: new FormControl()
     })
-    this.apiInfoService.GetInfo().subscribe(i => {this.apiInfo = i});
+    this.apiInfoService.GetInfo().subscribe(i => {
+      this.apiInfo = i;
+      this.formGroup.get("ExpansionsControl").updateValueAndValidity();
+    });
+
+    this.apiCardService.SearchForCards("Basic", "sets")
+    .subscribe((c) =>{
+      this.cards = c;
+    });
+  }
+
+  getCardImage(card: Card): string {
+    return "https://media.services.zam.com/v1/media/byName/hs/cards/enus/" + card.cardId + ".png";
   }
 
   getSets(): string[] {
