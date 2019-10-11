@@ -20,6 +20,7 @@ export class ApiCardService {
         .set("x-rapidapi-host", "omgvamp-hearthstone-v1.p.rapidapi.com")
         .set("x-rapidapi-key", environment.apiKey);
 
-        return this.http.get<Card[]>(url, {headers: headers});
+        return this.http.get<Card[]>(url, {headers: headers})
+        .map(l => l.filter(c => c.img != undefined));
     }
 }

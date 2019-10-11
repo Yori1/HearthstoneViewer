@@ -16,7 +16,7 @@ export class OverviewComponent implements OnInit {
   public cards: Card[] = [];
   public formGroup: FormGroup;
   public default = "Basic";
-  
+
 
   constructor(private formBuilder: FormBuilder, private apiInfoService: ApiInfoService, private apiCardService: ApiCardService) { }
 
@@ -29,7 +29,7 @@ export class OverviewComponent implements OnInit {
       this.formGroup.get("ExpansionsControl").updateValueAndValidity();
     });
 
-    this.apiCardService.SearchForCards("Basic", "sets")
+    this.apiCardService.SearchForCards("Naxxramas", "sets")
     .subscribe((c) =>{
       this.cards = c;
     });
