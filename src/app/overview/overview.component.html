@@ -6,15 +6,5 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-<button class="chf">abc</button>
-
-
-<mat-grid-list cols="6">
-  <mat-grid-tile *ngFor="let card of cards">
-        <mat-grid-list cols="2">
-          <mat-grid-tile [colspan]="2">
-              <img class="cardImg " src="{{getCardImage(card)}}" onerror="this.onerror=null; this.src='assets/cardback.png'">
-          </mat-grid-tile>
-        </mat-grid-list>
-      </mat-grid-tile>
-</mat-grid-list>
+<br>
+<img *ngFor="let card of cards" class="cardImg " src="{{getCardImage(card)}}" onerror="this.onerror=null; this.src='assets/cardback.png'">
