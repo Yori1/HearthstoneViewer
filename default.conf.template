@@ -6,7 +6,7 @@ server {
 
     index index.html index.htm index.nginx-debian.html;
 
-        server_name https://animalshop-client.herokuapp.com/;
+        server_name https://hearthviewer-staging.herokuapp.com/;
 
 
   location / {
