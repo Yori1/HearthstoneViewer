@@ -30,7 +30,7 @@ export class OverviewComponent implements OnInit {
       this.formGroup.get("ExpansionsControl").updateValueAndValidity();
     });
 
-    this.apiCardService.SearchForCards("Naxxramas", "sets")
+    this.apiCardService.SearchForCards("Journey to Un'Goro", "sets")
     .subscribe((c) =>{
       this.cards = c;
     });
