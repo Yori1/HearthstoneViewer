@@ -13,15 +13,13 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-
-
-
-
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OverviewComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
