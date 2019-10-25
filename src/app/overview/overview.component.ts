@@ -4,7 +4,6 @@ import { ApiInfoService } from '../logic/api-info-service';
 import { Card } from '../models/card';
 import { ApiCardService } from '../logic/api.card.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import * as Shake from '../../../node_modules/shake.js'
 
 @Component({
   selector: 'app-overview',
@@ -18,12 +17,8 @@ export class OverviewComponent implements OnInit {
   public formGroup: FormGroup;
   public default = "Basic";
 
-  private shake: Shake;
 
-  constructor(
-    private formBuilder: FormBuilder,
-     private apiInfoService: ApiInfoService,
-      private apiCardService: ApiCardService) { }
+  constructor(private formBuilder: FormBuilder, private apiInfoService: ApiInfoService, private apiCardService: ApiCardService) { }
 
   ngOnInit() {
       this.formGroup = new FormGroup({
@@ -38,13 +33,6 @@ export class OverviewComponent implements OnInit {
     .subscribe((c) =>{
       this.cards = c;
     });
-
-    this.shake = new Shake({threshold: 15});
-    this.shake.start();
-    window.addEventListener('shake', function(){
-      this.cards=[];
-  }, false);
-
   }
 
   getCardImage(card: Card): string {
