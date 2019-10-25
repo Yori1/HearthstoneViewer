@@ -7,4 +7,7 @@
   </mat-select>
 </mat-form-field>
 <br>
-<img *ngFor="let card of cards" class="cardImg " src="{{getCardImage(card)}}" onerror="this.onerror=null; this.src='assets/cardback.png'">
+<div class="card-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+  <img cdkDrag  *ngFor="let card of cards" class="cardImg " src="{{getCardImage(card)}}"
+  onerror="this.onerror=null; this.src='assets/cardback.png'">
+</div>

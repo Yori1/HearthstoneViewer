@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { OverviewComponent } from './overview/overview.component';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ReactiveFormsModule} from '@angular/forms'
 import {MatListModule} from '@angular/material/list';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 
 
 
@@ -30,11 +32,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatSelectModule,
     ReactiveFormsModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  
+
  }

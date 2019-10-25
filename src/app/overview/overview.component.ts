@@ -4,6 +4,7 @@ import { ApiInfoService } from '../logic/api-info-service';
 import { Card } from '../models/card';
 import { ApiCardService } from '../logic/api.card.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-overview',
@@ -53,5 +54,20 @@ export class OverviewComponent implements OnInit {
       this.cards = c;
     });
   }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+  }
+
+  array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+};
 
 }
