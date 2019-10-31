@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { ApiCardService } from '../logic/api.card.service';
-import { Card } from '../models/card';
+import { ApiCardService } from '../../logic/api.card.service';
+import { Card } from '../../models/card';
 import {NgZone} from '@angular/core';
+import { CardImpl } from '../../models/card.impl';
+import { ListImpl } from 'src/app/models/list.impl';
 
 
 @Component({
@@ -25,6 +27,7 @@ constructor(
 }
 
   ngOnInit() {
+    this.card = new CardImpl();
     this.route.paramMap.subscribe(params => {
         let name = params.get('name');
         console.log(name);
