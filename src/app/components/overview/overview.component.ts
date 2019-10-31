@@ -5,6 +5,7 @@ import { Card } from '../../models/card';
 import { ApiCardService } from '../../logic/api.card.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CardDisplayingService } from './card.displaying.service';
 
 @Component({
   selector: 'app-overview',
@@ -13,63 +14,30 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class OverviewComponent implements OnInit {
 
-  public apiInfo: ApiInfo;
-  public cards: Card[] = [];
   public formGroup: FormGroup;
-  public default = "Basic";
 
 
   constructor(private formBuilder: FormBuilder,
-     private apiInfoService: ApiInfoService,
-      private apiCardService: ApiCardService) { }
+    public displayingService: CardDisplayingService) { }
 
   ngOnInit() {
       this.formGroup = new FormGroup({
       ExpansionsControl: new FormControl()
     })
-    this.apiInfoService.GetInfo().subscribe(i => {
-      this.apiInfo = i;
-      this.formGroup.get("ExpansionsControl").updateValueAndValidity();
-    });
 
-    this.apiCardService.SearchForCards("Journey to Un'Goro", "sets")
-    .subscribe((c) =>{
-      this.cards = c;
-    });
   }
 
-  getCardImage(card: Card): string {
-    return "https://media.services.zam.com/v1/media/byName/hs/cards/enus/" + card.cardId + ".png";
+  onChangeExpansion() {
+    let value = this.formGroup.get("ExpansionsControl").value
+    this.displayingService.onChangeExpansion(value);
   }
 
   getSets(): string[] {
     let sets = null;
-    if(this.apiInfo != null) {
-      sets = this.apiInfo.sets;
+    if(this.displayingService.apiInfo != null) {
+      sets = this.displayingService.apiInfo.sets;
     }
+    this.formGroup.get("ExpansionsControl").updateValueAndValidity();
     return sets;
   }
-
-  onChangeExpansion() {
-    this.apiCardService.SearchForCards(this.formGroup.get("ExpansionsControl").value, "sets")
-    .subscribe((c) =>{
-      this.cards = c;
-    });
-  }
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
-  }
-
-  array_move(arr, old_index, new_index) {
-    if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-        while (k--) {
-            arr.push(undefined);
-        }
-    }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing
-};
-
 }

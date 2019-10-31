@@ -4,32 +4,32 @@ import { ApiInfo } from 'src/app/models/api-info';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ApiInfoService } from 'src/app/logic/api-info-service';
 import { ApiCardService } from 'src/app/logic/api.card.service';
+import { Injectable, OnInit } from '@angular/core';
 
-export class CardDisplayingService {
+@Injectable({
+  providedIn: 'root'
+})
+export class CardDisplayingService{
   public apiInfo: ApiInfo;
   public cards: Card[] = [];
-  public formGroup: FormGroup;
   public default = "Basic";
 
 
-  constructor(private formBuilder: FormBuilder,
-     private apiInfoService: ApiInfoService,
-      private apiCardService: ApiCardService) { }
+  constructor(
+    private apiInfoService: ApiInfoService,
+    private apiCardService: ApiCardService) {
+      this.apiInfoService.GetInfo().subscribe(i => {
+        this.apiInfo = i;
+      });
 
-  ngOnInit() {
-      this.formGroup = new FormGroup({
-      ExpansionsControl: new FormControl()
-    })
-    this.apiInfoService.GetInfo().subscribe(i => {
-      this.apiInfo = i;
-      this.formGroup.get("ExpansionsControl").updateValueAndValidity();
-    });
+      this.apiCardService.SearchForCards("Journey to Un'Goro", "sets")
+      .subscribe((c) =>{
+        this.cards = c;
+      });
+    }
 
-    this.apiCardService.SearchForCards("Journey to Un'Goro", "sets")
-    .subscribe((c) =>{
-      this.cards = c;
-    });
-  }
+
+
 
   getCardImage(card: Card): string {
     return "https://media.services.zam.com/v1/media/byName/hs/cards/enus/" + card.cardId + ".png";
@@ -43,8 +43,8 @@ export class CardDisplayingService {
     return sets;
   }
 
-  onChangeExpansion() {
-    this.apiCardService.SearchForCards(this.formGroup.get("ExpansionsControl").value, "sets")
+  onChangeExpansion(expansion: string) {
+    this.apiCardService.SearchForCards(expansion, "sets")
     .subscribe((c) =>{
       this.cards = c;
     });
