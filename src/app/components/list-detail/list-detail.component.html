@@ -10,9 +10,21 @@ Tweet</a>
 <div >
     <ng-container *ngFor="let card$ of this.listService.cardsInList">
       <div  *ngIf="card$ | async as card">
-          <div>Title: {{card[0].name}}</div>
-          <img    class="cardImg " src="{{this.displayingService.getCardImage(card[0])}}"
-          onerror="this.onerror=null; this.src='assets/cardback.png'">
+        <div class="row">
+          <div class="col-xs-7">
+              <img class="cardImg " src="{{this.displayingService.getCardImage(card[0])}}"
+              onerror="this.onerror=null; this.src='assets/cardback.png'">
+          </div>
+          <div class="col-xs-5">
+              <div>{{card[0].name}}</div>
+              <b><div>{{card[0].type}}</div></b><br>
+
+              <div [innerHTML]="card[0].text"></div>
+
+          </div>
+        </div>
+
+
       </div>
     </ng-container>
 
