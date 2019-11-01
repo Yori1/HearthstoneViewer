@@ -7,9 +7,9 @@
 href="{{this.twitterLink}}">
 Tweet</a>
 
-<div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="this.displayingService.drop($event)">
+<div >
     <ng-container *ngFor="let card$ of this.listService.cardsInList">
-      <div cdkDrag  *ngIf="card$ | async as card">
+      <div  *ngIf="card$ | async as card">
           <div>Title: {{card[0].name}}</div>
           <img    class="cardImg " src="{{this.displayingService.getCardImage(card[0])}}"
           onerror="this.onerror=null; this.src='assets/cardback.png'">
