@@ -3,14 +3,13 @@
 </a>
 
 
-<div class="card-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="this.displayingService.drop($event)">
-    <a *ngFor="let card$ of this.listService.cardsInList">
-      <div *ngIf="card$ | async as card">
-          <div>Title: {{card[0].cardName}}</div>
-
-          <img cdkDrag   class="cardImg " src="{{this.displayingService.getCardImage(card[0])}}"
+<div cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="this.displayingService.drop($event)">
+    <ng-container *ngFor="let card$ of this.listService.cardsInList">
+      <div cdkDrag  *ngIf="card$ | async as card">
+          <div>Title: {{card[0].name}}</div>
+          <img    class="cardImg " src="{{this.displayingService.getCardImage(card[0])}}"
           onerror="this.onerror=null; this.src='assets/cardback.png'">
       </div>
-      </a>
+    </ng-container>
 
 </div>
