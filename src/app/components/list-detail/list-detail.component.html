@@ -3,8 +3,8 @@
 </a>
 
 
-<div class="card-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
-    <a *ngFor="let card$ of this.listService.cardsInList" (click)="onClick(card.cardId)">
+<div class="card-list" cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="this.displayingService.drop($event)">
+    <a *ngFor="let card$ of this.listService.cardsInList">
       <div *ngIf="card$ | async as card">
           <div>Title: {{card[0].cardName}}</div>
 
