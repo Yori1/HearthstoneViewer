@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { ListService } from './list.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ListDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private listService: ListService
   ) {
 
   }
@@ -23,7 +24,16 @@ export class ListDetailComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.listId = params.get("id");
+    });
+    let cards = this.listService.CardQueryPromiseObservable(this.listId);
+    cards.subscribe(c => {
+      let cd = c;
+      c.then(id => {
+        let thing = id;
+        let k;
       });
+    }
+    );
   }
-
 }
+

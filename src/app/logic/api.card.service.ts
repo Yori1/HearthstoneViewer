@@ -14,8 +14,7 @@ export class ApiCardService {
     ){}
 
     public SearchForCards(query: String, endpoint: string): Observable<Card[]> {
-        let convertedQuery =  "/" + query ;
-        let url = environment.hearthstoneApi + "cards/" + endpoint + convertedQuery;
+        let url = environment.hearthstoneApi + "cards/" + endpoint + query;
         let headers = new HttpHeaders()
         .set("x-rapidapi-host", "omgvamp-hearthstone-v1.p.rapidapi.com")
         .set("x-rapidapi-key", environment.apiKey);

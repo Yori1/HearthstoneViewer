@@ -22,7 +22,7 @@ export class CardDisplayingService{
         this.apiInfo = i;
       });
 
-      this.apiCardService.SearchForCards("Journey to Un'Goro", "sets")
+      this.apiCardService.SearchForCards("Journey to Un'Goro", "sets/")
       .subscribe((c) =>{
         this.cards = c;
       });

@@ -20,17 +20,23 @@ export class CardManagingService {
 
 
 
-  public AddCard(cardId: string) {
+  public AddCard(cardId: string): Promise<boolean> {
     let ref = this.firestore.collection('/lists').doc(this.listId);
 
+    return ref.ref.get().then(doc => {
+      if(doc.exists) {
+        let collectionCardIds: string[] =  doc.get('cardIds');
+        if(collectionCardIds == undefined) {
+          collectionCardIds = [];
+        }
+        collectionCardIds.push(cardId);
+        ref.set({cardIds: collectionCardIds});
 
-    ref.ref.get().then(doc => {
-      let collectionCardIds: string[] =  doc.get('cardIds');
-      if(collectionCardIds == undefined) {
-        collectionCardIds = [];
+        return true;
       }
-      collectionCardIds.push(cardId);
-      ref.set({cardIds: collectionCardIds});
+
+      else return false;
+
     });
 
 
