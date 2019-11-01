@@ -30,7 +30,7 @@ export class CardManagingService {
           collectionCardIds = [];
         }
         collectionCardIds.push(cardId);
-        ref.set({cardIds: collectionCardIds});
+        ref.update({cardIds: collectionCardIds});
 
         return true;
       }

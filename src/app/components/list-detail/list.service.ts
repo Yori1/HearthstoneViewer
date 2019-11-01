@@ -2,31 +2,41 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, QuerySnapshot } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Card } from 'src/app/models/card';
+import { ApiCardService } from 'src/app/logic/api.card.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListService {
+  private _cardsInList: Observable<Card>[] = [];
+
+
+    public get cardsInList(): Observable<Card>[]
+ {
+        return this._cardsInList;
+    }
+
 
   constructor(
-    private fireStore: AngularFirestore
+    private fireStore: AngularFirestore,
+    private apiCardService: ApiCardService,
   ){}
 
-  public CardQueryPromiseObservable(idListToGetFor: string): Observable<Promise<any>> {
+  public UpdateCardsInList(id: string) {
+   this.GetCards(id).subscribe(oc => this._cardsInList = oc)
+  }
+
+  private GetCards(idListToGetFor: string): Observable<Observable<Card>[]> {
     let listChanges = this.fireStore.collection("/lists").doc(idListToGetFor).snapshotChanges();
-    let observablePromises = listChanges
+    let cardIds = listChanges
     .map((action) =>{
-      let listIds: number[] = action.payload.get('cardIds');
-      if(listIds == undefined) {
-        listIds = [];
+      let cardIds: string[] = action.payload.get('cardIds');
+      if(cardIds == undefined) {
+        cardIds = [];
       }
-      return listIds.map(id => this.fireStore
-        .collection<Card>('/cards').ref.where('cardId', '==', id.toString()).get());
+      return cardIds;
       });
 
-      let observablePromise = observablePromises.filter(a => a.length > 0)
-      .map(a => a[0]);
-
-     return observablePromise.map(p => p.then(p => p.docs[0].get('cardId')))
+      return cardIds.map(ids => ids.map(id => this.apiCardService.GetCard(id)));
   }
 }
