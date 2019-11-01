@@ -8,6 +8,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CardDisplayingService } from './card.displaying.service';
 import { CardManagingService } from './card.managing.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-overview',
@@ -21,7 +22,7 @@ export class OverviewComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     public displayingService: CardDisplayingService,
-    public cardManagingService: CardManagingService,
+    public cardManagingService: CardManagingService
     ) { }
 
   ngOnInit() {
@@ -49,6 +50,7 @@ export class OverviewComponent implements OnInit {
   }
 
   onClick(cardId: string) {
-    this.cardManagingService.AddCard(cardId)
+    this.cardManagingService.AddCard(cardId);
+
       }
 }

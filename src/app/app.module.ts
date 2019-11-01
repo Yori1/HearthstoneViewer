@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { ListDetailComponent } from './components/list-detail/list-detail.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -49,6 +50,7 @@ import { AngularFireModule } from '@angular/fire';
     MatButtonModule,
     MatInputModule,
     FormsModule,
+    MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
