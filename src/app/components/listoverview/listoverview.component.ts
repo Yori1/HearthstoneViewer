@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ListImpl } from 'src/app/models/list.impl';
 import { Observable } from 'rxjs';
-import { AngularFirestore, DocumentChangeAction } from 'angularfire2/firestore';
 import { List } from 'src/app/models/list';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-listoverview',

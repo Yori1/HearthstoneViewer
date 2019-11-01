@@ -6,6 +6,8 @@ import { ApiCardService } from '../../logic/api.card.service';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CardDisplayingService } from './card.displaying.service';
+import { CardManagingService } from './card.managing.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-overview',
@@ -17,10 +19,15 @@ export class OverviewComponent implements OnInit {
   public formGroup: FormGroup;
 
 
-  constructor(private formBuilder: FormBuilder,
-    public displayingService: CardDisplayingService) { }
+  constructor(private route: ActivatedRoute,
+    public displayingService: CardDisplayingService,
+    public cardManagingService: CardManagingService,
+    ) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      this.cardManagingService.listId = params.get("id");
+      });
       this.formGroup = new FormGroup({
       ExpansionsControl: new FormControl()
     })
@@ -40,4 +47,8 @@ export class OverviewComponent implements OnInit {
     this.formGroup.get("ExpansionsControl").updateValueAndValidity();
     return sets;
   }
+
+  onClick(cardId: string) {
+    this.cardManagingService.AddCard(cardId)
+      }
 }
