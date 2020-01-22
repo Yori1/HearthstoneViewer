@@ -24,7 +24,19 @@ export class PicturesComponent implements OnInit {
   ngOnInit() {
     if (this.hasGetUserMedia()) {
       navigator.mediaDevices.getUserMedia({
-        video: true
+        video: {
+          width: {
+            min: 1280,
+            ideal: 1920,
+            max: 2560,
+          },
+          height: {
+            min: 720,
+            ideal: 1080,
+            max: 1440
+          },
+          facingMode: 'environment'
+        }
       }).
   then((stream) => {
       this.videoRef.nativeElement.srcObject = stream});
