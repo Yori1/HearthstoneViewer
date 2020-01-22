@@ -1,11 +1,13 @@
+
 <div *ngFor="let list of lists | async">
     <a [routerLink]="['/listDetail', list.id]">
      <button mat-raised-button class="list-button" >{{list.name}}</button>
     </a>
   </div>
+  <br/>
 
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <form class="example-form">
             <mat-form-field class="example-full-width">
 
@@ -13,8 +15,9 @@
               </mat-form-field>
           </form>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <button (click)="onClickAdd()" mat-raised-button>Add</button>
     </div>
   </div>
+  <button mat-raised-button routerLink="/pictures">Take pictures of cards</button>
 

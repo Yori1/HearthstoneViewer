@@ -24,6 +24,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import {MatIconModule} from '@angular/material/icon';
+import { PicturesComponent } from './components/pictures/pictures.component';
 
 
 
@@ -35,6 +37,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     DetailComponent,
     ListoverviewComponent,
     ListDetailComponent,
+    PicturesComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule,
     MatSnackBarModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

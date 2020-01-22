@@ -4,13 +4,16 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { ListoverviewComponent } from './components/listoverview/listoverview.component';
 import { ListDetailComponent } from './components/list-detail/list-detail.component';
+import { PicturesComponent } from './components/pictures/pictures.component';
+
 
 
 const routes: Routes = [
   {path: '', component: ListoverviewComponent},
   { path: 'detail/:name', component: DetailComponent },
   { path: 'listDetail/:id', component: ListDetailComponent},
-  { path: 'addCards/:id', component: OverviewComponent}
+  { path: 'addCards/:id', component: OverviewComponent},
+  { path: 'pictures', component: PicturesComponent }
 ];
 
 @NgModule({

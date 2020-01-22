@@ -7,6 +7,22 @@
 href="{{this.twitterLink}}">
 Tweet</a>
 
+<div class="row">
+    <div class="col-xs-1">
+        <button mat-icon-button>
+          <mat-icon>grid_on</mat-icon>
+        </button>
+    </div>
+    <div class="col-xs-1">
+        <button mat-icon-button>
+            <mat-icon>view_list</mat-icon>
+
+        </button>
+    </div>
+  </div>
+
+
+
 <div >
     <ng-container *ngFor="let card$ of this.listService.cardsInList">
       <div  *ngIf="card$ | async as card">
