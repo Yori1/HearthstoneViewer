@@ -30,7 +30,7 @@ export class PicturesComponent implements OnInit {
       this.videoRef.nativeElement.srcObject = stream});
       this.videoRef.nativeElement.width = 300;
     } else {
-      alert('getUserMedia() is not supported by your browser');
+      alert('Either getUserMedia() is not supported by your browser, or you accessed the site using http. Try putting https before the url instead of http.');
     }
 
 
