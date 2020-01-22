@@ -28,12 +28,21 @@ export class PicturesComponent implements OnInit {
       }).
   then((stream) => {
       this.videoRef.nativeElement.srcObject = stream});
-      console.log(this.tref.nativeElement.textContent);
+      this.videoRef.nativeElement.width = 300;
     } else {
       alert('getUserMedia() is not supported by your browser');
     }
 
-    this.canvasRef.nativeElement.width=50;
+
+  }
+
+  drawImage() {
+    this.canvasRef.nativeElement.width = this.videoRef.nativeElement.videoWidth;
+  this.canvasRef.nativeElement.height = this.videoRef.nativeElement.videoHeight;
+  this.canvasRef.nativeElement.getContext('2d').drawImage(this.videoRef.nativeElement, 0, 0);
+  // Other browsers will fall back to image/png
+  this.imageRef.nativeElement.src = this.canvasRef.nativeElement.toDataURL('image/webp');
+  this.imageRef.nativeElement.width = this.videoRef.nativeElement.width;
   }
 
 
